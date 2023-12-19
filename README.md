@@ -1,18 +1,22 @@
-# Vue 3 + TypeScript + Vite
+# Jitsi Meet Chrome Crash
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a sample project that demonstrates Google Chrome crashing when moving an `<iframe>` element
+of a [Jitsi Meet]([url](https://meet.jit.si/)) video call is moved between the slots of a
+[Web Component]([url](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)).
 
-## Recommended IDE Setup
+The issue seems to be widespread on Chromium-based browsers since it was also reproducible on [Arc]([url](https://arc.net/)).
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Check this demo video:
 
-## Type Support For `.vue` Imports in TS
+https://github.com/LSViana/jitsi-meet-chrome-crash/assets/21217790/632250d9-ab4e-4fc2-8b0c-9d62c73b354f
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+The demonstration video shows the browser crashing when focusing the "Name" input inside of the `<iframe>`
+but sometimes the browser crashes without requiring any user interaction.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+For more information, I recommend to:
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+1. Access [jitsi-meet-chrome-crash.vercel.app]([url](https://jitsi-meet-chrome-crash.vercel.app/)) to try and reproduce the issue locally;
+   - Save your work before trying this since your browser may crash.
+   - You may do it by cloning the repository into your machine as well.
+   
+2. Check the source code inside `src/components/Demo.vue` where the code that causes the crash lives.
