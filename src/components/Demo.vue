@@ -44,6 +44,7 @@ onMounted(() => {
 });
 
 function updateSlot(): void {
+    // @ts-ignore There are no type definitions for JitsiMeetExternalAPI.
     const frame: HTMLIFrameElement = api.value?._frame;
 
     if (!frame) {
